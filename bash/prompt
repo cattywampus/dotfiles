@@ -1,0 +1,20 @@
+prompt_left() {
+  echo -e "\\u on \\h in \\w\n\\\t"
+}
+
+prompt_right() {
+  echo -e "$(__git_ps1 "(%s)")"
+}
+
+prompt() {
+  if [[ $(platform) == 'osx' ]]; then
+    right_offset=$(tput cols)
+  else
+    right_offset=$COLUMNS
+  fi
+
+  PS1=$(printf "%*s\r%s\$ " $COLUMNS "$(prompt_right)" "$(prompt_left)")
+}
+
+PROMPT_COMMAND=prompt
+
