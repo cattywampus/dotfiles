@@ -82,4 +82,9 @@ source $DOTFILES/git/git-prompt.sh
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
 
-export EDITOR="mate -w"
+if command -v mate >/dev/null 2>&1; then
+  export EDITOR="mate -w"
+else
+  export EDITOR=vim
+fi
+
