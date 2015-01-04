@@ -18,7 +18,6 @@
 [push]
 	default = simple
 [core]
-	editor = mate -wl1
 	excludesfile = ~/.gitignore
 [filter "media"]
 	clean = git media clean %f
