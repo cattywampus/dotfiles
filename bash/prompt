@@ -3,18 +3,17 @@ prompt_left() {
 }
 
 prompt_right() {
-  echo -e "$(__git_ps1 "(%s)")"
+  echo -e "$(__git_ps1 " (%s)")"
 }
 
 prompt() {
   left=$(prompt_left)
   right=$(prompt_right)
 
-  gap_length=$(( $COLUMNS-${#right}-1 ))
+  gap_length=$(( $COLUMNS-${#right} ))
   gap=$(printf "%.0s-" $(seq 1 $gap_length))
-  right="$gap $right"
 
-  PS1=$(printf "%*s\r%s \$ " $COLUMNS "$right" "$left")
+  PS1=$(printf "%*s\r%s \$ " $COLUMNS "$gap$right" "$left")
 }
 
 PROMPT_COMMAND=prompt
