@@ -1,5 +1,5 @@
 prompt_left() {
-  echo -e "\\u on \\h in \\w\n\\\t"
+  echo -e "-- \\u on \\h in \\w \n\\\t"
 }
 
 prompt_right() {
@@ -7,13 +7,14 @@ prompt_right() {
 }
 
 prompt() {
-  if [[ $(platform) == 'osx' ]]; then
-    right_offset=$(tput cols)
-  else
-    right_offset=$COLUMNS
-  fi
+  left=$(prompt_left)
+  right=$(prompt_right)
 
-  PS1=$(printf "%*s\r%s\$ " $COLUMNS "$(prompt_right)" "$(prompt_left)")
+  gap_length=$(( $COLUMNS-${#right}-1 ))
+  gap=$(printf "%.0s-" $(seq 1 $gap_length))
+  right="$gap $right"
+
+  PS1=$(printf "%*s\r%s \$ " $COLUMNS "$right" "$left")
 }
 
 PROMPT_COMMAND=prompt
