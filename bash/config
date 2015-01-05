@@ -87,7 +87,7 @@ else
 fi
 
 
-for config in $(find $DOTFILES -name config | egrep -v "bash/config$" | egrep -v "\.git/config$")
+for config in $(find $DOTFILES -name config | egrep -v "(\.git(/.*)?|bash)/config$")
 do
   source $config
 done
