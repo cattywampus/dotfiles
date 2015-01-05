@@ -79,12 +79,16 @@ GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWUPSTREAM="verbose"
 
 source $DOTFILES/git/git-prompt.sh
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
 
 if command -v mate >/dev/null 2>&1; then
   export EDITOR="mate -w"
 else
   export EDITOR=vim
 fi
+
+
+for config in $(find $DOTFILES -name config | egrep -v "bash/config$" | egrep -v "\.git/config$")
+do
+  source $config
+done
 
