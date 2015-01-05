@@ -1,4 +1,4 @@
-alias ls='ls -G'
+alias ls='ls --color=auto -G'
 alias ll='ls -la'
 alias psg='ps aux | grep '
 
@@ -7,7 +7,7 @@ do
   source $aliases
 done
 
-platform() 
+platform()
 {
   platform='unknown'
   case $OSTYPE in
