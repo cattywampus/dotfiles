@@ -10,10 +10,15 @@ prompt() {
   left=$(prompt_left)
   right=$(prompt_right)
 
-  gap_length=$(( $COLUMNS-${#right} ))
+  if [ -z "$COLUMNS" ]; then
+    width=$(stty size | cut -d' ' -f2)
+  else
+    width=$COLUMNS
+  fi
+  gap_length=$(( $width-${#right} ))
   gap=$(printf "%.0s-" $(seq 1 $gap_length))
 
-  PS1=$(printf "%*s\r%s \$ " $COLUMNS "$gap$right" "$left")
+  PS1=$(printf "%*s\r%s \$ " $width "$gap$right" "$left")
 }
 
 PROMPT_COMMAND=prompt
