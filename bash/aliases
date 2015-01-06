@@ -1,14 +1,5 @@
-alias ls='ls --color=auto -G'
-alias ll='ls -la'
-alias psg='ps aux | grep '
 
-for aliases in $(find $DOTFILES -name aliases | egrep -v "bash/aliases$")
-do
-  source $aliases
-done
-
-platform()
-{
+platform() {
   platform='unknown'
   case $OSTYPE in
     darwin*) platform='osx' ;;
@@ -17,4 +8,18 @@ platform()
 
   echo $platform
 }
+
+if [[ "$(platform)" == 'osx' ]]; then
+  alias ls='ls -G'
+else
+  alias ls='ls --color=auto'
+fi
+
+alias ll='ls -la'
+alias psg='ps aux | grep '
+
+for aliases in $(find $DOTFILES -name aliases | egrep -v "bash/aliases$")
+do
+  source $aliases
+done
 
