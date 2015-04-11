@@ -199,3 +199,8 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
+"------------------------------------------------------------
+" Airline Settings
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
