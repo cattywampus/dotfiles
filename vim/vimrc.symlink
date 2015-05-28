@@ -207,3 +207,8 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
+"------------------------------------------------------------
+" Git Helpers
+
+" Reset cursor to first line when editing a git commit message
+autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])

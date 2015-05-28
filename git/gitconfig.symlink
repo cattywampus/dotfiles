@@ -21,6 +21,7 @@
 [push]
 	default = simple
 [core]
+	editor = vim
 	excludesfile = ~/.gitignore
 [filter "media"]
 	clean = git media clean %f
