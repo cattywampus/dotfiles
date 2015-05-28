@@ -81,10 +81,11 @@ GIT_PS1_SHOWUPSTREAM="verbose"
 source $DOTFILES/git/git-prompt.sh
 
 if command -v mate >/dev/null 2>&1; then
-  export EDITOR="mate -w"
+  export VISUAL="mate -w"
 else
-  export EDITOR=vim
+  export VISUAL=vim
 fi
+export EDITOR=vim
 
 
 for config in $(find $DOTFILES -name config | egrep -v "(\.git(/.*)?|bash)/config$")
