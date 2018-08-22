@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'irb/completion'
 
-%w[looksee/shortcuts interactive_editor awesome_print].each do |gem|
+%w[awesome_print].each do |gem|
   begin
     require gem
   rescue LoadError => err
@@ -28,7 +28,7 @@ class Object
   def local_methods(obj = self)
     (obj.methods - obj.class.superclass.instance_methods).sort
   end
-  
+
   # print documentation
   #
   #   ri 'Array#pop'
