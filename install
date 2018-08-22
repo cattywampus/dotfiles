@@ -135,6 +135,7 @@ install_dotfiles () {
   done
 
   link_file "$DOTFILES_ROOT/vim" "$HOME/.vim"
+  link_file "$DOTFILES_ROOT/bin" "$HOME/.bin"
 }
 
 install_dotfiles

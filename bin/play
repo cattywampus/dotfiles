@@ -1,0 +1,20 @@
+#!/bin/sh
+
+tmux new-session -d -n 'terminal' -s play
+tmux split-window -v -p 25
+tmux select-pane -t 1
+tmux split-window -h -p 40
+tmux split-window -v
+tmux select-pane -t 1
+tmux new-window -n 'dev'
+tmux split-window -h
+tmux split-window -v
+tmux select-pane -t 1
+tmux new-window -n 'runtime'
+tmux split-window -h
+tmux select-pane -t 1
+
+tmux select-window -t 1
+
+tmux -2 attach-session -d -t play
+

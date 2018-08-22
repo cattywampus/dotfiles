@@ -1,0 +1,18 @@
+#!/bin/sh
+
+if [ -n "$TMUX" ]; then exit 1; fi
+
+pushd ~/code/taphere
+
+tmux new-session -d -n 'dev' -s work
+tmux split-window -h
+tmux split-window -v
+tmux new-window -n 'runtime'
+tmux split-window -h
+
+tmux select-window -t 1
+tmux select-pane -t 1
+
+tmux -2 attach-session -d -t work
+
+popd
